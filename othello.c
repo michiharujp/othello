@@ -170,10 +170,10 @@ int count_number(int size, int board[size][size], int color) {
 int main(void) {
     int n = 1;
     while(n % 2 != 0) {
-        printf("一辺の数を偶数で入力してください:");
+        printf("Input even number: ");
         scanf("%d", &n);
         if (n % 2 != 0) {
-            printf("偶数を入力してください！（怒）\n");
+            printf("It isn't even number\n");
         }
     }
     int board[n][n];
@@ -184,15 +184,15 @@ int main(void) {
     bool put, pre;
     while(true) {
         if(color == 1) {
-            printf("白のターンです\n");
+            printf("It's white's turn\n");
         } else if(color == -1) {
-            printf("黒のターンです\n");
+            printf("It's black's turn\n");
         }
         pre = check(n, board, color);
         print_board(n, board);
         get_rid_of_pre(n, board);
         if(!pre) {
-            printf("置く場所がありません\n");
+            printf("No space to put\n");
             color = -color;
             pass++;
             if(pass == 2) {
@@ -203,26 +203,26 @@ int main(void) {
         pass = 0;
         scanf("%d %d", &h, &w);
         if(board[h][w] != 0){
-            printf("既に置いてあります\n");
+            printf("already filled\n");
             continue;
         }
         put = reverse(n, board, h, w, color);
         if(!put){
-            printf("そこにはおけません\n");
+            printf("inapropriate space\n");
             continue;
         }
         color = -color;
     }
     int white = count_number(n, board, 1);
     int black = count_number(n, board, -1);
-    printf("結果発表\n");
-    printf("白が%d個、黒が%d個\n", white, black);
+    printf("result\n");
+    printf("white's score: %d、black's score: %d\n", white, black);
     if(white > black) {
-        printf("白の勝ちです\n");
+        printf("white won\n");
     } else if(white < black) {
-        printf("黒の勝ちです\n");
+        printf("black won\n");
     } else {
-        printf("引き分けです\n");
+        printf("draw\n");
     }
     return 0;
 }
