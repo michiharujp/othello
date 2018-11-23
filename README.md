@@ -1,6 +1,3 @@
-# Minimum limit Reversi
-The goal is write most beatiful code to play reversi.
-
 # Rule
 This application should satisfy following conditions.
 * specify the position which you can put next stone.
